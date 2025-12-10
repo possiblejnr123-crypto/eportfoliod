@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Possible - Developer & Scout Leader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #E9E9E9;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #004e92, #00d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6E6E6E;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #000000;
+            background: rgba(0, 78, 146, 0.1);
+        }
+
+        .cta-button {
+            background: #000000;
+            color: white;
+            padding: 0.625rem 1.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.15s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #1a1a1a;
+            transform: scale(0.98);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 1.5rem 6rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-card {
+            background: white;
+            border: 1px solid #F1F1F4;
+            border-radius: 2.5rem;
+            padding: 4rem 3rem;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-eyebrow span {
+            font-size: 1.25rem;
+        }
+
+        .hero-eyebrow p {
+            color: #7B7B7B;
+            font-size: 0.9375rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.25rem, 6vw, 4.25rem);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            color: #000000;
+        }
+
+        .hero-description {
+            color: #6E6E6E;
+            font-size: 1.125rem;
+            max-width: 32rem;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-title {
+            font-family: 'Inter', sans-serif;
+            color: #000000;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .about-text p {
+            color: #4A4A4A;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        .quote-card {
+            background: #F8F9FA;
+            border: 1px solid #E9EBF0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .quote-card blockquote {
+            color: #2A2A2A;
+            font-size: 1.125rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .scouting-card {
+            background: white;
+            border: 1px solid #E9EBF0;
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .scouting-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .skill-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #004e92;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .skill-content h4 {
+            color: #000000;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-content p {
+            color: #6E6E6E;
+            font-size: 0.875rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 1.5rem;
+            background: #FAFAFA;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .projects-title {
+            color: #000000;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .projects-description {
+            color: #6E6EE;
+            font-size: 1.125rem;
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #E6E6E6;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: #CFCFCF;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .project-info {
+            grid-column: span 2;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-live {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-development {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .status-planning {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .project-description {
+            color: #4A4A4A;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: #F1F3F4;
+            color: #4A4A4A;
+            font-size: 0.875rem;
+            border-radius: 0.5rem;
+        }
+
+        .project-cta {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #004e92;
+            font-weight: 500;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .project-card:hover .project-link {
+            gap: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-title {
+            color: #000000;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .contact-description {
+            color: #6E6E6E;
+            font-size: 1.125rem;
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #E6E6E6;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .contact-card:hover {
+            border-color: #004e92;
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #004e92;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            transition: transform 0.2s;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-card h3 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a, .contact-card p {
+            color: #6E6E6E;
+            text-decoration: none;
+            transition: color 0.2s;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            color: #004e92;
+        }
+
+        /* Message Section */
+        .message-section {
+            background: #F8F9FA;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .message-section h3 {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .message-section p {
+            color: #6E6E6E;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #000000;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #E6E6E6;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #004e92;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* File Upload */
+        .file-upload-section {
+            background: white;
+            border: 2px dashed #E6E6E6;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+        }
+
+        .file-upload-section:hover,
+        .file-upload-section.drag-over {
+            border-color: #004e92;
+            background: #F8F9FF;
+        }
+
+        .file-upload-section.has-files {
+            border-color: #00d4ff;
+            background: #F0FDFF;
+        }
+
+        .upload-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #F1F3F4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .file-upload-section:hover .upload-icon {
+            background: #004e92;
+            color: white;
+        }
+
+        .upload-text h4 {
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-text p {
+            color: #6E6E6E;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-types {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .file-list {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            background: #F8F9FA;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-item .file-name {
+            flex: 1;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .file-item .file-size {
+            color: #6E6E6E;
+            font-size: 0.8rem;
+        }
+
+        .remove-file {
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .submit-btn {
+            background: #004e92;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #003d75;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #004e92, #00d4ff);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-section button {
+            background: white;
+            color: #004e92;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cta-section button:hover {
+            background: #f0f0f0;
+            transform: scale(0.98);
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .message.success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .message.error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .project-content {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            .project-info {
+                grid-column: span 1;
+            }
+
+            .project-cta {
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .about {
+                padding: 4rem 1.5rem;
+            }
+
+            .projects {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-section {
+                padding: 2rem;
+            }
+
+            .message-section {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth transitions */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="scrollToSection('home')">
+                <div class="logo-icon">P</div>
+                <span class="logo-text">Possible</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" onclick="scrollToSection('home')" class="nav-link">Home</a></li>
+                <li><a href="#about" onclick="scrollToSection('about')" class="nav-link">About</a></li>
+                <li><a href="#projects" onclick="scrollToSection('projects')" class="nav-link">Projects</a></li>
+                <li><a href="#contact" onclick="scrollToSection('contact')" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button class="cta-button" onclick="scrollToSection('message')">Let's Talk</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" onclick="toggleMobileMenu()">×</button>
+        <a href="#home" onclick="scrollToSection('home'); toggleMobileMenu()">Home</a>
+        <a href="#about" onclick="scrollToSection('about'); toggleMobileMenu()">About</a>
+        <a href="#projects" onclick="scrollToSection('projects'); toggleMobileMenu()">Projects</a>
+        <a href="#contact" onclick="scrollToSection('contact'); toggleMobileMenu()">Contact</a>
+        <button class="cta-button" onclick="scrollToSection('message'); toggleMobileMenu()">Let's Talk</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-card">
+                <div class="hero-eyebrow">
+                    <span>⚜️</span>
+                    <p>Hi there! I'm Possible, passionate about helping my community find opportunities</p>
+                </div>
+
+                <h1 class="hero-title">
+                    Exploring Technology<br>
+                    Scouting Opportunities<br>
+                    Building Innovation
+                </h1>
+
+                <p class="hero-description">
+                    Combining technical expertise with scouting values to create meaningful impact in Kinshasa and beyond. Building the future, one project at a time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-left">
+                <h2 class="about-title">About Us</h2>
+                
+                <div class="about-text">
+                    <p>Hello! I'm a passionate developer and dedicated scout leader committed to making a positive impact through technology and community service.</p>
+                    <p>My journey combines technical expertise with the values of scouting, creating a unique perspective on problem-solving and leadership in Kinshasa.</p>
+                </div>
+
+                <div class="quote-card">
+                    <blockquote>"The scout motto 'Be Prepared' guides everything I do, both in technology and life."</blockquote>
+                </div>
+            </div>
+
+            <div class="scouting-card">
+                <h3>Scouting Experience</h3>
+                
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-dot"></div>
+                        <div class="skill-content">
+                            <h4>Leadership Development</h4>
+                            <p>Leading scout troops and organizing community service projects</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-dot"></div>
+                        <div class="skill-content">
+                            <h4>Outdoor Skills</h4>
+                            <p>Expert in camping, survival skills, and environmental conservation</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-dot"></div>
+                        <div class="skill-content">
+                            <h4>Community Service</h4>
+                            <p>Dedicated to helping others and making a positive impact in Kinshasa</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-dot"></div>
+                        <div class="skill-content">
+                            <h4>Character Building</h4>
+                            <p>Embodying scout values of trustworthiness, loyalty, helpfulness, and respect</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-dot"></div>
+                        <div class="skill-content">
+                            <h4>Teamwork</h4>
+                            <p>Building strong bonds through collaborative activities and challenges</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-dot"></div>
+                        <div class="skill-content">
+                            <h4>Global Citizenship</h4>
+                            <p>Understanding and appreciating diverse cultures and perspectives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="projects-container">
+            <div class="projects-header">
+                <h2 class="projects-title">Featured Projects</h2>
+                <p class="projects-description">
+                    From community-focused applications to educational platforms, here are some projects I'm passionate about.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: How to get scouted -->
+                <div class="project-card" onclick="openProject('project1')">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3 class="project-title">How to get scouted</h3>
+                                <span class="status-badge status-development">In Development</span>
+                            </div>
+                            
+                            <p class="project-description">
+                                A detailed insight on what scouts look for and the steps players must take to stand out and get noticed.
+                            </p>
+                            
+                            <div class="tech-tags">
+                                <span class="tech-tag">Football</span>
+                                <span class="tech-tag">Scouting</span>
+                                <span class="tech-tag">Player Development</span>
+                            </div>
+                        </div>
+
+                        <div class="project-cta">
+                            <a href="https://www.youtube.com/watch?v=docMLoxMyX4&t"
+                               class="project-link"
+                               target="_blank">
+                                <span>Watch: How to get scouted</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Inside the minds of scouts -->
+                <div class="project-card" onclick="openProject('scout-connect')">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3 class="project-title">Inside the minds of scouts</h3>
+                                <span class="status-badge status-live">Live</span>
+                            </div>
+                            
+                            <p class="project-description">
+                                Understanding how scouts think and evaluate players – what they see, value, and remember during games.
+                            </p>
+                            
+                            <div class="tech-tags">
+                                <span class="tech-tag">Analysis</span>
+                                <span class="tech-tag">Football IQ</span>
+                                <span class="tech-tag">Professional Level</span>
+                            </div>
+                        </div>
+
+                        <div class="project-cta">
+                            <a href="https://www.youtube.com/watch?v=ffsTubEN-SE"
+                               class="project-link"
+                               target="_blank">
+                                <span>Watch: Inside the minds of scouts</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: How to impress scouts -->
+                <div class="project-card" onclick="openProject('codescout-academy')">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3 class="project-title">How to impress scouts</h3>
+                                <span class="status-badge status-planning">Planning</span>
+                            </div>
+                            
+                            <p class="project-description">
+                                Key habits, discipline, body language, and gameplay intelligence that make scouts keep their eyes on you.
+                            </p>
+                            
+                            <div class="tech-tags">
+                                <span class="tech-tag">Performance</span>
+                                <span class="tech-tag">Mindset</span>
+                                <span class="tech-tag">Career Growth</span>
+                            </div>
+                        </div>
+
+                        <div class="project-cta">
+                            <a href="https://www.youtube.com/watch?v=-V_4GIANgvA&t=5s"
+                               class="project-link"
+                               target="_blank">
+                                <span>Watch: How to impress scouts</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2 class="contact-title">Let's Connect</h2>
+                <p class="contact-description">
+                    Ready to collaborate on something amazing? Let's discuss how we can make a positive impact together.
+                </p>
+            </div>
+
+            <div class="contact-cards">
+                <div class="contact-card" onclick="callPhone()">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:0970688346">+ 243 970 688 346</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Kinshasa, Democratic Republic of Congo</p>
+                </div>
+
+                <div class="contact-card" onclick="sendEmail()">
+                    <div class="contact-icon">✉</div>
+                    <h3>Email</h3>
+                    <a href="mailto:possiblejnr123@gmail.com">possiblejnr123@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- Message Section -->
+            <div id="message" class="message-section">
+                <h3>Send me a message</h3>
+                <p>Have a project in mind or just want to chat? Fill out the form below and I'll get back to you as soon as possible!</p>
+                
+                <div id="success-message" class="message success">
+                    <strong>Message sent successfully!</strong> I'll get back to you within 24 hours.
+                </div>
+                
+                <div id="error-message" class="message error">
+                    <strong>Oops!</strong> Something went wrong. Please try again or contact me directly.
+                </div>
+
+                <form class="contact-form" id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Project Type</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select a project type</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-app">Mobile App</option>
+                            <option value="scouting-project">Scouting Project</option>
+                            <option value="consultation">Technical Consultation</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project, ideas, or how we can collaborate..." required></textarea>
+                    </div>
+
+                    <!-- File Upload Section -->
+                    <div class="form-group">
+                        <label>Attachments (Optional)</label>
+                        <div class="file-upload-section" id="file-upload" onclick="document.getElementById('file-input').click()">
+                            <div class="upload-icon">📁</div>
+                            <div class="upload-text">
+                                <h4>Upload Files</h4>
+                                <p>Share videos, documents, images, or any project materials</p>
+                                <div class="file-types">Supports: PDF, DOC, DOCX, MP4, MOV, JPG, PNG, ZIP (Max 50MB per file)</div>
+                            </div>
+                            <input type="file" id="file-input" multiple style="display: none" accept=".pdf,.doc,.docx,.mp4,.mov,.avi,.jpg,.jpeg,.png,.gif,.zip,.rar">
+                        </div>
+                        <div id="file-list" class="file-list"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="cta-section">
+                <h3>Ready to Start Something Great?</h3>
+                <p>Whether it's a tech project or community initiative, let's make it happen together.</p>
+                <button onclick="scrollToSection('message')">Start a Conversation</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        let currentSection = 'home';
+        
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateActiveNav(sectionId);
+            }
+        }
+
+        function updateActiveNav(sectionId) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current section
+            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            currentSection = sectionId;
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Project interaction – now opens your YouTube videos
+        function openProject(projectId) {
+            const projectUrls = {
+                'project1': 'https://www.youtube.com/watch?v=docMLoxMyX4&t',
+                'scout-connect': 'https://www.youtube.com/watch?v=ffsTubEN-SE',
+                'codescout-academy': 'https://www.youtube.com/watch?v=-V_4GIANgvA&t=5s'
+            };
+            
+            if (projectUrls[projectId]) {
+                window.open(projectUrls[projectId], '_blank');
+            }
+        }
+
+        // Contact functionality
+        function callPhone() {
+            window.location.href = 'tel:0970688346';
+        }
+
+        function sendEmail() {
+            window.location.href = 'mailto:possiblejnr123@gmail.com';
+        }
+
+        // File upload functionality
+        let uploadedFiles = [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('file-input');
+            const fileUploadSection = document.getElementById('file-upload');
+            const fileList = document.getElementById('file-list');
+            
+            // File input change handler
+            fileInput.addEventListener('change', function(e) {
+                handleFiles(e.target.files);
+            });
+            
+            // Drag and drop functionality
+            fileUploadSection.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                fileUploadSection.classList.add('drag-over');
+            });
+            
+            fileUploadSection.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                fileUploadSection.classList.remove('drag-over');
+            });
+            
+            fileUploadSection.addEventListener('drop', function(e) {
+                e.preventDefault();
+                fileUploadSection.classList.remove('drag-over');
+                handleFiles(e.dataTransfer.files);
+            });
+        });
+        
+        function handleFiles(files) {
+            const maxSize = 50 * 1024 * 1024; // 50MB
+            const allowedTypes = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'video/mp4',
+                'video/quicktime',
+                'video/x-msvideo',
+                'image/jpeg',
+                'image/jpg',
+                'image/png',
+                'image/gif',
+                'application/zip',
+                'application/x-rar-compressed'
+            ];
+            
+            Array.from(files).forEach(file => {
+                if (file.size > maxSize) {
+                    alert(`File "${file.name}" is too large. Maximum size is 50MB.`);
+                    return;
+                }
+                
+                if (!allowedTypes.includes(file.type)) {
+                    alert(`File type "${file.type}" is not supported.`);
+                    return;
+                }
+                
+                uploadedFiles.push(file);
+                displayFile(file);
+            });
+            
+            updateFileUploadUI();
+        }
+        
+        function displayFile(file) {
+            const fileList = document.getElementById('file-list');
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <span class="file-name">${file.name}</span>
+                <span class="file-size">${formatFileSize(file.size)}</span>
+                <button type="button" class="remove-file" onclick="removeFile('${file.name}')">×</button>
+            `;
+            fileList.appendChild(fileItem);
+        }
+        
+        function removeFile(fileName) {
+            uploadedFiles = uploadedFiles.filter(file => file.name !== fileName);
+            updateFileList();
+            updateFileUploadUI();
+        }
+        
+        function updateFileList() {
+            const fileList = document.getElementById('file-list');
+            fileList.innerHTML = '';
+            uploadedFiles.forEach(file => {
+                displayFile(file);
+            });
+        }
+        
+        function updateFileUploadUI() {
+            const fileUploadSection = document.getElementById('file-upload');
+            if (uploadedFiles.length > 0) {
+                fileUploadSection.classList.add('has-files');
+                fileUploadSection.querySelector('.upload-text h4').textContent = `${uploadedFiles.length} file(s) selected`;
+            } else {
+                fileUploadSection.classList.remove('has-files');
+                fileUploadSection.querySelector('.upload-text h4').textContent = 'Upload Files';
+            }
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Hide previous messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Add uploaded files to form data
+            uploadedFiles.forEach((file, index) => {
+                formData.append(`attachment_${index}`, file);
+            });
+            
+            // Simulate form submission (replace with your actual form handler)
+            setTimeout(() => {
+                // For demonstration, we'll just show success
+                // In a real application, you'd send this data to your server
+                
+                const isSuccess = Math.random() > 0.1; // 90% success rate for demo
+                
+                if (isSuccess) {
+                    successMessage.classList.add('show');
+                    this.reset();
+                    uploadedFiles = [];
+                    updateFileList();
+                    updateFileUploadUI();
+                    
+                    // Log form data (for demo purposes)
+                    console.log('Form submitted successfully!');
+                    for (let [key, value] of formData.entries()) {
+                        console.log(key, value);
+                    }
+                } else {
+                    errorMessage.classList.add('show');
+                }
+                
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }, 2000);
+        });
+
+        // Scroll spy for navigation
+        window.addEventListener('scroll', function() {
+            const sections = ['home', 'about', 'projects', 'contact'];
+            const scrollPos = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element && scrollPos >= element.offsetTop && scrollPos < element.offsetTop + element.offsetHeight) {
+                    updateActiveNav(section);
+                }
+            });
+        });
+
+        // Smooth animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.project-card, .contact-card, .message-section');
+            animateElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
